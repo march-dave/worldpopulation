@@ -17,23 +17,23 @@
               getPopulation();
         }
 
-       $.ajax({
-          url: url,
-          method: 'GET',
-          success: function(data){
-            console.debug('Response:');
-            console.debug(data);
-          },
-          dataType: "jsonp"
-      });
+      //  $.ajax({
+      //     url: url,
+      //     method: 'GET',
+      //     success: function(data){
+      //       console.debug('Response:');
+      //       console.debug(data);
+      //     },
+      //     dataType: "jsonp"
+      // });
 
 
         function getPopulation() {
             var settings = {
-                url: "https://population.simonsfoundation.org/test/",
+                url: "https://population.simonsfoundation.org/countries",
                 method: 'GET',
                 success: function(data){
-                //   console.debug('Response:');
+                  console.debug('Response:');
                   console.debug(data);
                 },
                 dataType: "jsonp"
@@ -54,7 +54,7 @@
           });
         }
 
-    }
+    // }
 
     </script>
 
