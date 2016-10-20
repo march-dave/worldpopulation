@@ -14,24 +14,45 @@
     $(document).ready(init);
 
     function init() {
-      console.log('init');
+              getPopulation();
+        }
 
-      var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://api.population.io:80/1.0/countries",
-      "method": "GET",
-      "dataType": "jsonp",
-      "headers": {
-        "cache-control": "no-cache"
-        // "content-type:application/json"
-      }
-    }
+       $.ajax({
+          url: url,
+          method: 'GET',
+          success: function(data){
+            console.debug('Response:');
+            console.debug(data);
+          },
+          dataType: "jsonp"
+      });
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
-    
+
+        function getPopulation() {
+            var settings = {
+                url: "https://population.simonsfoundation.org/test/",
+                method: 'GET',
+                success: function(data){
+                //   console.debug('Response:');
+                  console.debug(data);
+                },
+                dataType: "jsonp"
+            }
+        //   var settings = {
+        //     "async": true,
+        //     "dataType": "jsonp",
+        //     "crossDomain": true,
+        //     "url": "http://api.population.io:80/1.0/countries",
+        //     "method": "GET",
+        //     "headers": {
+        //       "cache-control": "no-cache"
+        //     }
+        //   }
+
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
+        }
 
     }
 
