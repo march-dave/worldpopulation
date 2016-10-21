@@ -33,8 +33,8 @@
                 url: "https://population.simonsfoundation.org/countries",
                 method: 'GET',
                 success: function(data){
-                  console.debug('Response:');
-                  console.debug(data);
+                  // console.debug('Response:');
+                  // console.debug(data);
                 },
                 dataType: "jsonp"
             }
@@ -50,7 +50,11 @@
         //   }
 
           $.ajax(settings).done(function (response) {
-            console.log(response);
+
+            var array = [];
+            array = response;
+
+            console.log(array);
           });
         }
 
