@@ -14,8 +14,8 @@
     $(document).ready(init);
 
     function init() {
-              getPopulation();
-        }
+      getPopulation();
+    }
 
       //  $.ajax({
       //     url: url,
@@ -27,38 +27,38 @@
       //     dataType: "jsonp"
       // });
 
+      function getPopulation() {
+          var settings = {
+              // url: "https://population.simonsfoundation.org/countries",
+              url: "https://population.simonsfoundation.org/population/2016/Canada/18/",
+              method: 'GET',
+              success: function(data){
+                // console.debug('Response:');
+                console.debug(data);
+              },
+              dataType: "jsonp"
+          }
+      //   var settings = {
+      //     "async": true,
+      //     "dataType": "jsonp",
+      //     "crossDomain": true,
+      //     "url": "http://api.population.io:80/1.0/countries",
+      //     "method": "GET",
+      //     "headers": {
+      //       "cache-control": "no-cache"
+      //     }
+      //   }
 
-        function getPopulation() {
-            var settings = {
-                url: "https://population.simonsfoundation.org/countries",
-                method: 'GET',
-                success: function(data){
-                  // console.debug('Response:');
-                  // console.debug(data);
-                },
-                dataType: "jsonp"
-            }
-        //   var settings = {
-        //     "async": true,
-        //     "dataType": "jsonp",
-        //     "crossDomain": true,
-        //     "url": "http://api.population.io:80/1.0/countries",
-        //     "method": "GET",
-        //     "headers": {
-        //       "cache-control": "no-cache"
-        //     }
-        //   }
+        $.ajax(settings).done(function (response) {
 
-          $.ajax(settings).done(function (response) {
+          var array = [];
+          array = response;
 
-            var array = [];
-            array = response;
+          var counter = array.countries;
 
-            var counter = array.countries;
-
-            console.log('counter', counter.sort());
-          });
-        }
+          console.log('counter', counter);
+        });
+      }
 
     // }
 
