@@ -15,6 +15,8 @@
 
     function init() {
       getPopulation();
+
+      $('#counter').add("p").css('background-color', 'red');
     }
 
       //  $.ajax({
@@ -62,10 +64,6 @@
             sortArray[i] = [country[i].length, country[i]];
           }
 
-          // console.log(sortArray.sort( function(a, b) {
-          //   return a[0] -  b[0];
-          // }  ) );
-
           sortArray.sort( function(a, b) {
             return a[0] - b[0];
           }  )
@@ -79,7 +77,9 @@
 
     </script>
 
-
     {{{body}}}
+
+    <div id="counter">COUNTRY</div>
+
   </body>
 </html>
