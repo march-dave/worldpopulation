@@ -29,12 +29,12 @@
 
       function getPopulation() {
           var settings = {
-              // url: "https://population.simonsfoundation.org/countries",
-              url: "https://population.simonsfoundation.org/population/2016/Canada/18/",
+              url: "https://population.simonsfoundation.org/countries",
+              // url: "https://population.simonsfoundation.org/population/2016/Canada/18/",
               method: 'GET',
               success: function(data){
                 // console.debug('Response:');
-                console.debug(data);
+                // console.debug(data);
               },
               dataType: "jsonp"
           }
@@ -49,14 +49,22 @@
       //     }
       //   }
 
-        $.ajax(settings).done(function (response) {
 
+        var countriesTies = [300];
+        $.ajax(settings).done(function (response) {
           var array = [];
           array = response;
+          var country = array.countries;
+          // console.log('country', country);
 
-          var counter = array.countries;
+          var a = [];
+          for(var i=0; i< country.length; i++) {
+            a[i] = [country[i].length, country[i]];
+          }
 
-          console.log('counter', counter);
+          console.log(a.sort( function(a, b) {
+            return a[0] -  b[0];
+          }  ) );
         });
       }
 
