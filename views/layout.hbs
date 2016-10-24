@@ -57,14 +57,21 @@
           var country = array.countries;
           // console.log('country', country);
 
-          var a = [];
+          var sortArray = [];
           for(var i=0; i< country.length; i++) {
-            a[i] = [country[i].length, country[i]];
+            sortArray[i] = [country[i].length, country[i]];
           }
 
-          console.log(a.sort( function(a, b) {
-            return a[0] -  b[0];
-          }  ) );
+          // console.log(sortArray.sort( function(a, b) {
+          //   return a[0] -  b[0];
+          // }  ) );
+
+          sortArray.sort( function(a, b) {
+            return a[0] - b[0];
+          }  )
+
+          console.log('sortArray: ', sortArray);
+
         });
       }
 
