@@ -16,6 +16,8 @@
     function init() {
       getPopulation();
 
+      // $('#counter').appendTo("<p>Test</p>");
+      // $('.container').appendTo("<p>Test</p>");
       // $('#counter').add("p").css('background-color', 'green');
     }
 
@@ -68,11 +70,14 @@
             return a[0] - b[0];
           }  )
 
-          console.log('sortArray: ', sortArray);
+          // console.log('sortArray: ', sortArray);
 
-          for(var i=0; i<sortArray.length; i++) {
-            $('#counter').add("p").css('background-color', 'green');
-          }
+          // for(var i=0; i<sortArray.length; i++) {
+          //   // $('#counter').appendTo("span").css('background-color', 'blue');
+          //   $('#counter').appendTo("<p>Test</p>");
+          // }
+
+
 
         });
       }
@@ -84,6 +89,12 @@
     {{{body}}}
 
     <div id="counter">COUNTRY</div>
+
+      <h2>Greetings</h2>
+      <div class="container">
+        <div class="inner">Hello</div>
+        <div class="inner">Goodbye</div>
+      </div>
 
   </body>
 </html>
