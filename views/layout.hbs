@@ -16,7 +16,7 @@
     function init() {
       getPopulation();
 
-      $('#counter').add("p").css('background-color', 'red');
+      // $('#counter').add("p").css('background-color', 'green');
     }
 
       //  $.ajax({
@@ -69,6 +69,10 @@
           }  )
 
           console.log('sortArray: ', sortArray);
+
+          for(var i=0; i<sortArray.length; i++) {
+            $('#counter').add("p").css('background-color', 'green');
+          }
 
         });
       }
