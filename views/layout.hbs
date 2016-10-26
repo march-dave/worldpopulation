@@ -14,8 +14,13 @@
     $(document).ready(init);
 
     function init() {
-      $('.container2').appendTo("<p>Test</p>");
-      // getPopulation();
+      $(".container").append("<p>Test</p>").css("background-color", "blue");
+
+      $(".container").on("click", function() {
+        $(this).css("background-color", "red");
+      })
+
+      getPopulation();
 
       // $('#counter').appendTo("<p>Test</p>");
 
@@ -91,8 +96,8 @@
 
     <div id="counter">COUNTRY</div>
 
-      <h2>Greetings</h2>
-      <div class="container2">
+      <h2 class="container">Greetings</h2>
+      <div class="container">
         <div class="inner">Hello</div>
         <div class="inner">Goodbye</div>
       </div>
