@@ -8,99 +8,94 @@
   <body>
 
     <script>
-
+//  Consider
     // https://shrouded-shore-25367.herokuapp.com/
 
     $(document).ready(init);
 
     function init() {
 
-      getShortestCounteryName();
+      getShortestCountryName();
 
       $(".container").append("<p></p>").css("background-color", "blue");
 
       $(".inner").on("click", function(e) {
         e.preventDefault();
 
+        var countryName = e.target.innerText
         var divCountry = "#" + e.target.id;
         $(divCountry).css("background-color", "red");
+
+        var str = countryName.split(",");
+        var paramCountry = str[1];
+
+        getcountryOveral(paramCountry);
+
       })
 
     }
 
-      //  $.ajax({
-      //     url: url,
-      //     method: 'GET',
-      //     success: function(data){
-      //       console.debug(data);
-      //     },
-      //     dataType: "jsonp"
-      // });
+    function getcountryOveral(paramCountry) {
+       $.ajax({
+          url: "https://population.simonsfoundation.org/population/2016/" + paramCountry + "/18/",
+          method: 'GET',
+          success: function(data){
+            console.debug(data);
 
-      function getShortestCounteryName() {
-          var settings = {
-              url: "https://population.simonsfoundation.org/countries",
-              // url: "https://population.simonsfoundation.org/population/2016/Canada/18/",
-              method: 'GET',
-              success: function(data){
-                // console.debug('Response:');
-                // console.debug(data);
-              },
-              dataType: "jsonp"
-          }
-      //   var settings = {
-      //     "async": true,
-      //     "dataType": "jsonp",
-      //     "crossDomain": true,
-      //     "url": "http://api.population.io:80/1.0/countries",
-      //     "method": "GET",
-      //     "headers": {
-      //       "cache-control": "no-cache"
-      //     }
-      //   }
+            $(".overal").append("<p>" + "age: " + data[0].age + "</div>");
+            $(".overal").append("<p>" + "country: " + data[0].country + "</div>");
+            $(".overal").append("<p>" + "females: " + data[0].females + "</div>");
+            $(".overal").append("<p>" + "males: " + data[0].males + "</div>");
+            $(".overal").append("<p>" + "total: " + data[0].total + "</div>");
+            $(".overal").append("<p>" + "year: " + data[0].year + "</div>");
 
+          },
+          dataType: "jsonp"
+      });
+    }
 
-        var countriesTies = [300];
-        $.ajax(settings).done(function (response) {
-          var array = [];
-          array = response;
-          var country = array.countries;
-          // console.log('country', country);
+    function getShortestCountryName() {
+        var settings = {
+            url: "https://population.simonsfoundation.org/countries",
+            method: 'GET',
+            success: function(data){
+            },
+            dataType: "jsonp"
+        }
 
-          var sortArray = [];
-          for(var i=0; i< country.length; i++) {
-            sortArray[i] = [country[i].length, country[i]];
-          }
+      var countriesTies = [300];
+      $.ajax(settings).done(function (response) {
+        var array = [];
+        array = response;
+        var country = array.countries;
+        // console.log('country', country);
 
-          sortArray.sort( function(a, b) {
-            return a[0] - b[0];
-          }  )
+        var sortArray = [];
+        for(var i=0; i< country.length; i++) {
+          sortArray[i] = [country[i].length, country[i]];
+        }
 
-          // for(var i=0; i<sortArray.length; i++) {
-          for(var i=0; i<5; i++) {
-            $(".inner").append("<div id=id" + i + ">" + sortArray[i]  + "</div>");
+        sortArray.sort( function(a, b) {
+          return a[0] - b[0];
+        }  )
 
-            // ('<li id="' + key + '"><span class="name">' + val.entityname + '</span><br><span class="addr">'
-            // + val.principaladdress1 + '</span> <span class="city">' + val.principalcity + '</span></li>')
+        // for(var i=0; i<sortArray.length; i++) {
+        for(var i=0; i<5; i++) {
+          $(".inner").append("<div id=id" + i + ">" + sortArray[i]  + "</div>");
+        }
 
-
-
-          }
-
-        });
-      }
-
-    // }
+      });
+    }
 
     </script>
 
     {{{body}}}
 
-    <!-- <div id="counter">COUNTRY</div> -->
-
       <div class="container">
         <div class="inner"></div>
       </div>
+
+      <div class="overal"></div>
 
   </body>
 </html>
