@@ -14,26 +14,30 @@
     $(document).ready(init);
 
     function init() {
-      $(".container").append("<p>Test</p>").css("background-color", "blue");
 
-      $(".container").on("click", function() {
-        $(this).css("background-color", "red");
+      getShortestCounteryName();
+
+      $(".container").append("<p></p>").css("background-color", "blue");
+
+      $(".inner").on("click", function(e) {
+        e.preventDefault();
+
+        var divCountry = "#" + e.target.id;
+        $(divCountry).css("background-color", "red");
       })
 
-      getPopulation();
     }
 
       //  $.ajax({
       //     url: url,
       //     method: 'GET',
       //     success: function(data){
-      //       console.debug('Response:');
       //       console.debug(data);
       //     },
       //     dataType: "jsonp"
       // });
 
-      function getPopulation() {
+      function getShortestCounteryName() {
           var settings = {
               url: "https://population.simonsfoundation.org/countries",
               // url: "https://population.simonsfoundation.org/population/2016/Canada/18/",
@@ -72,11 +76,15 @@
             return a[0] - b[0];
           }  )
 
-          // console.log('sortArray: ', sortArray);
+          // for(var i=0; i<sortArray.length; i++) {
+          for(var i=0; i<5; i++) {
+            $(".inner").append("<div id=id" + i + ">" + sortArray[i]  + "</div>");
 
-          for(var i=0; i<sortArray.length; i++) {
-            // $('#counter').appendTo("span").css('background-color', 'blue');
-            $(".container").append("<p>" + sortArray[i]  + "</p>");
+            // ('<li id="' + key + '"><span class="name">' + val.entityname + '</span><br><span class="addr">'
+            // + val.principaladdress1 + '</span> <span class="city">' + val.principalcity + '</span></li>')
+
+
+
           }
 
         });
@@ -88,12 +96,10 @@
 
     {{{body}}}
 
-    <div id="counter">COUNTRY</div>
+    <!-- <div id="counter">COUNTRY</div> -->
 
-      <h2 class="container">Greetings</h2>
       <div class="container">
-        <div class="inner">Hello</div>
-        <div class="inner">Goodbye</div>
+        <div class="inner"></div>
       </div>
 
   </body>
